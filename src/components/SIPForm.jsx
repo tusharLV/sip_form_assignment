@@ -4,7 +4,7 @@ import {AccountDetails, InputHelper, SIPDuration, SubmitButton, Scheme, RadioInp
 import styles from '../style'
 import text from "../constants/index"
 import {func, object} from 'prop-types';
-const SIPForm = ({onFormSubmit,setEndDateHandler,errorState}) => {
+const SIPForm = ({onFormSubmit,setEndDateHandler,errorState,setStartDateHandler}) => {
 
     return(
         <div className="md:m-16 m-4">
@@ -34,7 +34,7 @@ const SIPForm = ({onFormSubmit,setEndDateHandler,errorState}) => {
                 </div>
                 <div className={`${styles.flexContainer}`}>
                     <div className={`${styles.subFormContainer}`}>
-                        <SIPDuration setEndDateHandler={setEndDateHandler}/>
+                        <SIPDuration setEndDateHandler={setEndDateHandler} setStartDateHandler={setStartDateHandler}/>
                         <hr className={`${styles.line}`}/>
                     </div>
                     <InputHelper text={text.SIP_start_date_input_helper}/>
@@ -78,6 +78,7 @@ const SIPForm = ({onFormSubmit,setEndDateHandler,errorState}) => {
 SIPForm.propTypes = {
     onFormSubmit:func,
     setEndDateHandler:func,
-    errorState: object
+    errorState: object,
+    setStartDateHandler: func,
 }
 export default SIPForm

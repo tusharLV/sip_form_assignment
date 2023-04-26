@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
 import {RadioInput, Select} from "./index";
 import {func} from "prop-types"
-const SIPDuration = ({setEndDateHandler}) => {
+const SIPDuration = ({setEndDateHandler,setStartDateHandler}) => {
 
     const [sipStartDate, setSipStartDate] = useState('')
     const [duration, setDuration] = useState('')
@@ -33,6 +33,7 @@ const SIPDuration = ({setEndDateHandler}) => {
                         dateFormat="EEE, MMMM d, yyyy"
                         onChange={(date) => {
                             setSipStartDate(date)
+                            setStartDateHandler(date)
                         }}
                         selected={sipStartDate ? sipStartDate : null}
                         wrapperClassName="datePicker"
@@ -103,6 +104,7 @@ const SIPDuration = ({setEndDateHandler}) => {
     )
 }
 SIPDuration.propTypes = {
-    setEndDateHandler: func
+    setEndDateHandler: func,
+    setStartDateHandler: func
 }
 export default SIPDuration

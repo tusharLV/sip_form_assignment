@@ -5,6 +5,7 @@ const FormLayout = () => {
 
     const [isSIPFormSubmitted,setIsSIPFormSubmitted] = useState(false)
     const [endDate,setEndDate] = useState(null)
+    const [startDate,setStartDate] = useState(null)
     const [showFullSWPForm,setShowFullSWPForm] = useState(false)
     const [errorObject,setErrorObject] = useState({error:false})
     const setEndDateHandler = (date) =>{
@@ -15,7 +16,9 @@ const FormLayout = () => {
         e.preventDefault()
         if(!endDate){
             setErrorObject({error: true,message:"Please Input Start Date and Duration to Move Forward"})
-        }else {
+        } else if(startDate <= new Date()){
+            setErrorObject({error: true,message:"SIP Start Date should be greater than today's date"})
+        } else {
             setIsSIPFormSubmitted(true)
             setErrorObject({error: false})
         }
@@ -35,6 +38,7 @@ const FormLayout = () => {
                     <SIPForm
                         onFormSubmit={onSIPFormSubmit}
                         setEndDateHandler={setEndDateHandler}
+                        setStartDateHandler={(date)=>setStartDate(date)}
                         errorState={errorObject}
                     />
                 ):(
