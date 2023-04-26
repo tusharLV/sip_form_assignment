@@ -23,8 +23,25 @@ You can now input the date and duration in the input fields and End date will fi
 Then click next, there you can see the Switch Date of 15 days after your SIP got over.\
 ![Alt text](https://imgtr.ee/images/2023/04/26/8snvc.png)\
 When you click next on SWP form the form will expand now you can choose the option of SWP to start after.
-Again the SWP start date can be filled automatically based on your preference.
+Again the SWP start date can be filled automatically based on your preference.\
 ![Alt text](https://imgtr.ee/images/2023/04/26/8s0jq.png)
+
 ---
+
 ## Thinking Behind Implementation
 
+- I have broken down the problems into components. Main page consists of two components Folio and FormLayout
+- Folio contains the top part of the design where user chooses the folio or create new Folio 
+- Most of the components of folio are static 
+- Second component the FormLayout is further divided in three parts top header containing step:1 and step:2 
+- Other two parts of FormLayout are SIPForm and SWPForm 
+- The assignment majorly consists of how props are being used and passed around in between the components
+- Also, how child components gets to mutate the parent component's attributes 
+
+![Alt text](https://imgtr.ee/images/2023/04/26/8sEwn.png)
+
+## Future 
+- We can create test cases in cypress to prevent any bug being generated due to regression
+- We can add validation to the complete form to prevent any security issue in the database
+- We can create a backend application in node or any preferred tech stack to write business logic and input data in database 
+- Create more framework like structure in the project to reuse code, data and design for better maintenance and development process
