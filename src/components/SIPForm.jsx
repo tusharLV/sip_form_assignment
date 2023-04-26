@@ -1,26 +1,23 @@
 import React from 'react'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {AccountDetails, InputHelper, SIPDuration} from './index'
+import {AccountDetails, InputHelper, SIPDuration, SubmitButton, Scheme, RadioInput} from './index'
 import styles from '../style'
 import text from "../constants/index"
-import {Scheme} from "./index";
-import {SubmitButton} from "./index";
-
-const SIPForm = ({onFormSubmit,setEndDateHandler}) => {
+import {func, object} from 'prop-types';
+const SIPForm = ({onFormSubmit,setEndDateHandler,errorState}) => {
 
     return(
-        <div className="m-16">
+        <div className="md:m-16 m-4">
             <form action="">
-                <div className="flex">
-                    <div className="w-1/2">
+                <div className={`${styles.flexContainer}`}>
+                    <div className={`${styles.subFormContainer}`}>
                         <Scheme/>
                         <hr className={`${styles.line}`}/>
                     </div>
                     <InputHelper text={text.SIP_scheme_Input_helper}/>
                 </div>
-                <div className="flex ">
-                   <div className="w-1/2">
+                <div className={`${styles.flexContainer}`}>
+                    <div className={`${styles.subFormContainer}`}>
                        <div className="flex">
                            <div className="w-1/3">
                                <label htmlFor="">
@@ -35,51 +32,52 @@ const SIPForm = ({onFormSubmit,setEndDateHandler}) => {
                    </div>
                     <InputHelper text={text.SIP_amount_input_helper}/>
                 </div>
-                <div className="flex">
-                    <div className="w-1/2">
+                <div className={`${styles.flexContainer}`}>
+                    <div className={`${styles.subFormContainer}`}>
                         <SIPDuration setEndDateHandler={setEndDateHandler}/>
                         <hr className={`${styles.line}`}/>
                     </div>
                     <InputHelper text={text.SIP_start_date_input_helper}/>
                 </div>
-                <div className="flex">
-                    <div className="w-1/2">
+                <div className={`${styles.flexContainer}`}>
+                    <div className={`${styles.subFormContainer}`}>
                         <div className={`${styles.inputContainer}`}>
                             <div className="w-1/2">
                                 <label htmlFor="">
                                     {text.SIP_top_up_input_label}
                                 </label>
                             </div>
-                            <div className="w-1/2 flex justify-around">
-                                <div><input type="radio" value="topUpBooleanTrue"/><span className="px-4">Yes</span></div>
-                                <div><input type="radio" value="topUpBooleanFalse"/><span className="px-4">No</span></div>
-                            </div>
+                            <RadioInput value={"topUpBooleanTrue"} spanText={"Yes"} containerStyle={"w-1/4"}/>
+                            <RadioInput value={"topUpBooleanFalse"} spanText={"No"} containerStyle={"w-1/4"}/>
                         </div>
                         <hr className={`${styles.line}`}/>
                     </div>
                     <InputHelper text={text.SIP_top_up_input_helper}/>
                 </div>
-                <div className="flex">
-                    <div className="w-1/2">
+                <div className={`${styles.flexContainer}`}>
+                    <div className={`${styles.subFormContainer}`}>
                         <div className={`${styles.inputContainer}`}>
                             <div className="w-1/2">
                                 <label htmlFor="">
                                     {text.SIP_first_payment_input_label}
                                 </label>
                             </div>
-                            <div className="w-1/2 flex justify-around">
-                                <div><input type="radio" value="firstPaymentBooleanTrue"/><span className="px-4">Yes</span></div>
-                                <div><input type="radio" value="firstPaymentBooleanFalse"/><span className="px-4">No</span></div>
-                            </div>
+                            <RadioInput value={"topUpBooleanTrue"} spanText={"Yes"} containerStyle={"w-1/4"}/>
+                            <RadioInput value={"topUpBooleanFalse"} spanText={"No"} containerStyle={"w-1/4"}/>
                         </div>
                         <hr className={`${styles.line}`}/>
                     </div>
                     <InputHelper text={text.SIP_first_payment_input_helper}/>
                 </div>
                 <AccountDetails/>
-                <SubmitButton onClickHandler={onFormSubmit}/>
+                <SubmitButton onClickHandler={onFormSubmit} errorState={errorState}/>
             </form>
         </div>
     )
+}
+SIPForm.propTypes = {
+    onFormSubmit:func,
+    setEndDateHandler:func,
+    errorState: object
 }
 export default SIPForm

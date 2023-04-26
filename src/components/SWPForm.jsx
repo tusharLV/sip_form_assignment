@@ -1,21 +1,22 @@
 import React, {useState} from 'react'
 import styles from "../style";
 import DatePicker from "react-datepicker";
-import {AccountDetails, InputHelper, Scheme, SubmitButton, SWPStartDate} from "./index";
+import {ExtendedSWPForm, InputHelper, Scheme, SubmitButton,RadioInput} from "./index";
 import text from "../constants";
-
+import {string,bool,func} from 'prop-types';
 const SWPForm = ({endDate,showFullSWPForm,formSubmitHandler}) => {
 
-    const [switchDate,setSwitchDate] = useState(endDate?new Date(endDate).setDate(endDate.getDate()+15):'')
+    const [switchDate] = useState(endDate?new Date(endDate).setDate(endDate.getDate()+15):'')
     return(
-        <div className="m-16">
+        <div className="md:m-16 m-4">
             <form action="">
-                <div className="flex">
-                    <div className="w-1/2">
+                <div className={`${styles.flexContainer}`}>
+                    <div className={`${styles.subFormContainer}`}>
                         <div className={`${styles.inputContainer}`}>
-                            <div className="w-1/2">
-                                <input type="radio"/><span className="px-4"> Same Scheme</span>
-                            </div>
+                            <RadioInput
+                                containerStyle={"w-1/2"}
+                                spanText={"Same Scheme"}
+                            />
                             <div className="w-1/2">
                                 <input type="radio" checked/><span className="px-4"><span>Another Scheme</span><div className="font-semibold">(One time switch required)</div></span>
                             </div>
@@ -44,50 +45,7 @@ const SWPForm = ({endDate,showFullSWPForm,formSubmitHandler}) => {
                 </div>
                 {
                     showFullSWPForm?(
-                        <div>
-                            <div className="flex">
-                                <div className="w-1/2">
-                                    <hr className={`${styles.line}`}/>
-                                    <div className={`${styles.inputContainer}`}>
-                                        <div className="w-1/3">
-                                            <label htmlFor="">
-                                                {text.SWP_frequency_label}
-                                            </label>
-                                        </div>
-                                        <div className="w-1/3">
-                                            <input type="radio" value="monthly"/><span className="px-4">Monthly</span>
-                                        </div>
-                                        <div className="w-1/3">
-                                            <input type="radio" value="quarterly"/><span className="px-4">Quarterly</span>
-                                        </div>
-                                    </div>
-                                    <hr className={`${styles.line}`}/>
-                                </div>
-                            </div>
-                            <div className="flex">
-                                <div className="w-1/2">
-                                    {text.SWP_amount_label}
-                                    <div className={`${styles.inputContainer} py-4`}>
-                                        <div className="w-1/3">
-                                            <input type="radio" value="monthly"/><span className="px-4">Recommended</span>
-                                        </div>
-                                        <div className="w-1/3">
-                                            <input type="radio" value="quarterly"/><span className="px-4">Custom</span>
-                                        </div>
-                                    </div>
-                                    <div className={`${styles.inputContainer} py-4`}>
-                                        <input type="text" className={`${styles.formInput}`} placeholder={`Amount`}/>
-                                    </div>
-                                    <hr className={`${styles.line}`}/>
-                                </div>
-                                <InputHelper text={text.SWP_amount_input_helper}/>
-                            </div>
-                            <div className="flex">
-                                <SWPStartDate switchDate={switchDate}/>
-                                <InputHelper text={text.SWP_start_date_helper}/>
-                            </div>
-                            <AccountDetails standingInstruction={false}/>
-                        </div>
+                        <ExtendedSWPForm switchDate={switchDate} />
                     ):(
                         <div></div>
                     )
@@ -96,5 +54,10 @@ const SWPForm = ({endDate,showFullSWPForm,formSubmitHandler}) => {
             </form>
         </div>
     )
+}
+SWPForm.propTypes = {
+    endDate: string,
+    showFullSWPForm: bool,
+    formSubmitHandler: func
 }
 export default SWPForm

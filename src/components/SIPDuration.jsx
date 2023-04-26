@@ -1,7 +1,8 @@
 import styles from "../style";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
-
+import {RadioInput, Select} from "./index";
+import {func} from "prop-types"
 const SIPDuration = ({setEndDateHandler}) => {
 
     const [sipStartDate, setSipStartDate] = useState('')
@@ -45,9 +46,12 @@ const SIPDuration = ({setEndDateHandler}) => {
                         Frequency
                     </label>
                 </div>
-                <div className="w-2/3">
-                    <input type="radio" value="monthly" checked/><span className="px-4">Monthly</span>
-                </div>
+                <RadioInput
+                    value={"monthly"}
+                    spanText={"Monthly"}
+                    containerStyle={"w-2/3"}
+                    checked={true}
+                />
             </div>
             <div className={`${styles.inputContainer}`}>
                 <div className="w-1/3">
@@ -56,16 +60,28 @@ const SIPDuration = ({setEndDateHandler}) => {
                     </label>
                 </div>
                 <div className="w-2/3">
-                    <select
-
-                        className={`${styles.formInput} text-gray-400 w-10/12`}
-                        onChange={(e)=>setDuration(e.target.value)}
-                    >
-                        <option value="" label="Duration" />
-                        <option label="5 years" value="5" />
-                        <option label="10 years" value="10" />
-                        <option label="15 years" value="15" />
-                    </select>
+                    <Select
+                        selectStyle={`${styles.formInput} text-gray-400 w-10/12`}
+                        options={[
+                            {
+                                value: "",
+                                label: "Duration"
+                            },
+                            {
+                                value: "5",
+                                label: "5 years"
+                            },
+                            {
+                                value: "10",
+                                label: "10 years"
+                            },
+                            {
+                                value: "15",
+                                label: "15 years"
+                            },
+                        ]}
+                        onChangeHandler={(e)=>setDuration(e.target.value)}
+                    />
                 </div>
             </div>
             <div className={`${styles.inputContainer}`}>
@@ -76,7 +92,6 @@ const SIPDuration = ({setEndDateHandler}) => {
                 </div>
                 <div className="w-2/3">
                     <DatePicker
-                        // showTimeSelect
                         dateFormat="EEE, MMMM d, yyyy"
                         selected={sipEndDate ? sipEndDate : null}
                         wrapperClassName="datePicker endDate"
@@ -86,5 +101,8 @@ const SIPDuration = ({setEndDateHandler}) => {
             </div>
         </div>
     )
+}
+SIPDuration.propTypes = {
+    setEndDateHandler: func
 }
 export default SIPDuration

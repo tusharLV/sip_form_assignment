@@ -1,40 +1,35 @@
 import React from 'react'
 import styles from "../style";
-import {InvestingThrough} from "./index";
+import {Button, InvestingThrough, Select, FolioHeading} from "./index";
 import text from '../constants/index'
 const Folio = () => {
     return(
-        <div className="folio-container m-8 box-border border-2 border-black p-8 rounded">
-            <div className="">
-                <div className="text-2xl font-bold flex items-center">
-                    {text.folio_heading} &nbsp;<img src="./exclamation-mark-inside-a-circle-svgrepo-com.svg" alt="" style={{height:"20px"}}/>
+        <div className="folio-container md:m-8 m-2 box-border border-2 border-black md:p-8 p-2 rounded">
+            <FolioHeading/>
+            <hr className={`${styles.line}`}/>
+            <div className="flex">
+                <Select
+                    selectStyle={`${styles.formInput} md:w-1/5 w-1/2 md:text-base text-xs`}
+                    options={[
+                        {
+                            value:"",
+                            label: "Choose Folio no"
+                        },
+                        {
+                            value:"BlackSalt",
+                            label:"SNP11289078R"
+                        }
+                    ]}
+                />
+                <div className="md:mx-8 mx-2">
+                    OR
                 </div>
-                <div className="my-4">
-                    {text.folio_subheading}
-                </div>
-                <hr className={`${styles.line}`}/>
-                <form action="">
-                    <div className="flex">
-                        <select
-                            value={"Choose Folio no."}
-                            className={`${styles.formInput} w-1/5 md:w-1/4 sm:w-1/3 xs:w-1/2`}
-                        >
-                            <option value="" label="Choose Folio no" />
-                            <option value="BlackSalt" label="SNP11289078R" />
-                        </select>
-                        <div className="mx-8">
-                            OR
-                        </div>
-                        <button className="xs:w-1/2 w-1/5 border-amber-400 border-2 rounded text-amber-400 h-8 bg-transparent">
-                            {text.proceed_with_a_new_folio_button}
-                        </button>
-                    </div>
-                    <div className="mt-4">
-                        {text.investing_through}
-                    </div>
-                    <InvestingThrough/>
-                </form>
+                <Button styleClass="border-amber-400 border-2 rounded text-amber-400 h-8 bg-transparent md:text-base text-xs md:w-1/5 w-1/2 overflow-ellipsis whitespace-nowrap" text={text.proceed_with_a_new_folio_button}/>
             </div>
+            <div className="mt-4">
+                {text.investing_through}
+            </div>
+            <InvestingThrough/>
         </div>
     )
 }

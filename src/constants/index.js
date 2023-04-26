@@ -3,7 +3,7 @@ const text = {
     proceed_with_a_new_folio_button: "Proceed with a New Folio",
     direct_button: "Direct",
     advisor_button: "Advisor / RIA",
-    distributor_button: "Distributor (ARN)",
+    distributor_button: "Distributor(ARN)",
     folio_heading: "Future Ready SIP",
     folio_subheading: "Be Future Ready by starting a SIP today and planning your SWP for future",
     SIP_scheme_Input_helper: "Start by setting up a SIP in a scheme of your choice. Remember you cannot choose ELSS or Target Maturity Funds for Future Ready SIP",

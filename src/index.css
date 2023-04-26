@@ -168,6 +168,17 @@ input[type='radio']:before {
 input[type='radio']:checked:before {
     background:#a9ed26;
 }
+@media only screen and (max-width: 600px) {
+    input[type='radio'] {
+        -webkit-appearance:none;
+        width:20px;
+        height:20px;
+        border:1px solid darkgray;
+        border-radius:50%;
+        outline:none;
+        transform: scale(1);
+    }
+}
 .datePicker input {
     border-color: #000000;
     border-width: 2px;

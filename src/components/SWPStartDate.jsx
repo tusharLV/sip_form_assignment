@@ -2,7 +2,8 @@ import styles from "../style";
 import text from "../constants";
 import DatePicker from "react-datepicker";
 import {useEffect, useState} from "react";
-
+import {string} from 'prop-types'
+import {Select} from "./index";
 const SWPStartDate = ({switchDate}) => {
     const [swpStartDate,setSwpStartDate] = useState(null)
     const [startDuration,setStartDuration] = useState('')
@@ -17,18 +18,18 @@ const SWPStartDate = ({switchDate}) => {
             date = swpStartType==='immediate' ? date.setDate(date.getDate()+15):(startDuration!=='' ? date.setFullYear(date.getFullYear() + parseInt(startDuration)) : '')
             setSwpStartDate(date)
         }
-    },[swpStartType,startDuration])
+    },[swpStartType,startDuration,switchDate])
     return(
-        <div className="w-1/2">
+        <div className={`${styles.subFormContainer}`}>
             SWP to start After
             <div className={`${styles.inputContainer}`}>
-                <div className="w-1/3">
+                <div className="w-1/3 ">
                     <input
                         type="radio"
                         value="immediate"
                         checked={swpStartType==="immediate"}
                         onClick={handleRadioClick}
-                    /><span className="px-4">Immediate <span className="line-clamp-1">(after 15 days)</span></span>
+                    /><span className="md:px-4 px-2">Immediate <span className="line-clamp-1">(after 15 days)</span></span>
                 </div>
                 <div className="w-2/3">
                     <input
@@ -38,26 +39,39 @@ const SWPStartDate = ({switchDate}) => {
                         onClick={handleRadioClick}
                     />
                     <span className="px-4">
-                                <select
-                                    className={`${styles.formInput} text-gray-400 w-80`}
-                                    onChange={(e)=>setStartDuration(e.target.value)}
-                                >
-                                    <option value="" label="Duration" />
-                                    <option label="5 years" value="5" />
-                                    <option label="10 years" value="10" />
-                                    <option label="15 years" value="15" />
-                                </select>
-                            </span>
+                        <Select
+                            selectStyle={`${styles.formInput} text-gray-400 md:w-4/5 w-2/3`}
+                            options={[
+                                {
+                                    value: "",
+                                    label: "Duration"
+                                },
+                                {
+                                    value: "5",
+                                    label: "5 years"
+                                },
+                                {
+                                    value: "10",
+                                    label: "10 years"
+                                },
+                                {
+                                    value: "15",
+                                    label: "15 years"
+                                },
+                            ]}
+                            onChangeHandler={(e)=>setStartDuration(e.target.value)}
+                        />
+                    </span>
                 </div>
             </div>
             <span className="text-sm">{text.SWP_start_date_notice}</span>
             <div className={`${styles.inputContainer}`}>
-                <div className="w-1/3">
+                <div className="md:w-1/3 w-1/2">
                     <label htmlFor="">
                         {text.SWP_start_date_label}
                     </label>
                 </div>
-                <div className="w-2/3">
+                <div className="md:w-2/3 w-1/2">
                     <DatePicker
                         dateFormat="EEE, MMMM d, yyyy"
                         selected={swpStartDate}
@@ -69,5 +83,8 @@ const SWPStartDate = ({switchDate}) => {
             <hr className={`${styles.line}`}/>
         </div>
     )
+}
+SWPStartDate.propTypes = {
+    switchDate: string
 }
 export default SWPStartDate

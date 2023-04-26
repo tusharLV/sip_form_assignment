@@ -6,13 +6,20 @@ const FormLayout = () => {
     const [isSIPFormSubmitted,setIsSIPFormSubmitted] = useState(false)
     const [endDate,setEndDate] = useState(null)
     const [showFullSWPForm,setShowFullSWPForm] = useState(false)
-
+    const [errorObject,setErrorObject] = useState({error:false})
     const setEndDateHandler = (date) =>{
         setEndDate(date)
     }
-    const onSIPFormSubmit = () => {
+    const onSIPFormSubmit = (e) => {
         //Logic to submit the form to backend
-        setIsSIPFormSubmitted(true)
+        e.preventDefault()
+        if(!endDate){
+            setErrorObject({error: true,message:"Please Input Start Date and Duration to Move Forward"})
+        }else {
+            setIsSIPFormSubmitted(true)
+            setErrorObject({error: false})
+        }
+
     }
     const onSWPFormSubmit = (e) =>{
         e.preventDefault()
@@ -21,13 +28,14 @@ const FormLayout = () => {
         }
     }
     return(
-        <div>
+        <div className="md:text-base text-sm">
             <FormHeader isSIPFormSubmitted={isSIPFormSubmitted}/>
             {
                 !isSIPFormSubmitted?(
                     <SIPForm
                         onFormSubmit={onSIPFormSubmit}
                         setEndDateHandler={setEndDateHandler}
+                        errorState={errorObject}
                     />
                 ):(
                     <div></div>

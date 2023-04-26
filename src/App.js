@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Folio,FormLayout} from '../src/components/index'
 function App() {
