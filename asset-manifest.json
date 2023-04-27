@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sip_form_assignment/static/css/main.784b64e3.css",
+    "main.js": "/sip_form_assignment/static/js/main.9371d235.js",
+    "static/js/787.0f7c34f9.chunk.js": "/sip_form_assignment/static/js/787.0f7c34f9.chunk.js",
+    "index.html": "/sip_form_assignment/index.html",
+    "main.784b64e3.css.map": "/sip_form_assignment/static/css/main.784b64e3.css.map",
+    "main.9371d235.js.map": "/sip_form_assignment/static/js/main.9371d235.js.map",
+    "787.0f7c34f9.chunk.js.map": "/sip_form_assignment/static/js/787.0f7c34f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.784b64e3.css",
+    "static/js/main.9371d235.js"
+  ]
+}
