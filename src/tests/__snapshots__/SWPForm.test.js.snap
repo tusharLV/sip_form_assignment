@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should check for SWPForm props and classes 1`] = `
+<div
+  className="md:m-16 m-4"
+>
+  <form
+    action=""
+  >
+    <div
+      className="flex md:flex-row flex-col-reverse"
+    >
+      <div
+        className="md:w-1/2 w-full md:px-0 px-2"
+      >
+        <div
+          className="flex py-2"
+        >
+          <div
+            className="w-1/2"
+          >
+            <input
+              checked={false}
+              type="radio"
+            />
+            <span
+              className="md:px-4 px-2"
+            >
+              Same Scheme
+            </span>
+          </div>
+          <div
+            className="w-1/2"
+          >
+            <input
+              checked={true}
+              type="radio"
+            />
+            <span
+              className="px-4"
+            >
+              <span>
+                Another Scheme
+              </span>
+              <div
+                className="font-semibold"
+              >
+                (One time switch required)
+              </div>
+            </span>
+          </div>
+        </div>
+        <div>
+          <div
+            className="flex py-2"
+          >
+            <div
+              className="w-1/3"
+            >
+              <label
+                htmlFor=""
+              >
+                Scheme
+              </label>
+            </div>
+            <div
+              className="w-2/3"
+            >
+              <select
+                className="rounded border-black border-2 h-8 p-1 placeholder-gray-400 outline-0 text-gray-400 w-10/12"
+                disabled={false}
+              >
+                <option
+                  label="Scheme Name"
+                  value=""
+                />
+                <option
+                  label="Blue Chip Mutual Fund"
+                  value="blue-chip-mutual-fund"
+                />
+              </select>
+            </div>
+          </div>
+          <div
+            className="flex py-2"
+          >
+            <div
+              className="w-1/3"
+            >
+              <label
+                htmlFor=""
+              >
+                Option
+              </label>
+            </div>
+            <div
+              className="w-2/3"
+            >
+              <select
+                className="rounded border-black border-2 h-8 p-1 placeholder-gray-400 outline-0 text-gray-600 bg-gray-400 w-10/12"
+                disabled={true}
+              >
+                <option
+                  label="Growth"
+                  value=""
+                />
+              </select>
+            </div>
+          </div>
+        </div>
+        <div
+          className="flex py-2 w-10/12 text-sm"
+        >
+          Your entire investment amount (all units) will be switched to this scheme 15 days after your last SIP installment date.
+        </div>
+        <div
+          className="flex py-2"
+        >
+          <div
+            className="w-1/3"
+          >
+            <label
+              htmlFor=""
+            >
+              Switch Date
+            </label>
+          </div>
+          <div
+            className="w-2/3"
+          >
+            <div
+              className="react-datepicker-wrapper datePicker endDate"
+            >
+              <div
+                className="react-datepicker__input-container "
+              >
+                <span
+                  aria-live="polite"
+                  className="react-datepicker__aria-live"
+                  role="alert"
+                />
+                <input
+                  className=""
+                  disabled={false}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="DD/MM/YYYY"
+                  readOnly={false}
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="md:w-1/2 w-full md:flex md:px-8 px-2 md:py-0 py-4 self-center"
+      >
+        Now choose if your SWP should be from the same scheme as your SIP or from another scheme. If you choose another scheme, a one time switch of your entire investment amount (all units) will occur in 15 days of your last SIP date.
+      </div>
+    </div>
+    <div />
+    <div
+      className="flex flex-col justify-center w-full p-8"
+    >
+      <div />
+      <button
+        className="border-2 rounded border-amber-400 md:w-3/12 w-1/2 h-8 bg-amber-400 self-center"
+        onClick={[Function]}
+      >
+        Next
+      </button>
+      <span
+        className="self-center text-sm"
+      >
+        Be Future Ready by starting a SIP today and planning your SWP for future
+      </span>
+    </div>
+  </form>
+</div>
+`;

@@ -1,13 +1,13 @@
 import './App.css';
-import {Folio,FormLayout} from '../src/components/index'
+import { Folio, FormLayout } from '../src/components/index';
 function App() {
   return (
     <div className="bg-primary">
       <div>
-          <Folio/>
+        <Folio />
       </div>
       <div>
-          <FormLayout/>
+        <FormLayout />
       </div>
     </div>
   );
